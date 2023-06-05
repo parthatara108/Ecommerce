@@ -3,7 +3,7 @@ import { BsFillGridFill, BsList } from "react-icons/bs";
 import { useContext } from "react";
 import { FilterContext } from "../context/FilterContext";
 const Sort = () => {
-  const { filter_products: products, grid_view, setGridView, setListView, sorting_item, updateSort } = useContext(FilterContext)
+  const { filter_products, grid_view, setGridView, setListView, updateSort } = useContext(FilterContext)
   return (
     // <Wrapper>
     //   <div className="sorting-list--grid">
@@ -21,7 +21,7 @@ const Sort = () => {
     //   </div>
 
     //   <div className="product-data">
-    //     <p>{`${filter_products[0].length} Products Available`}</p>
+    //     <p>{`${filter_products.length} Products Available`}</p>
     //   </div>
 
     //   <div className="sort-selection">
@@ -43,36 +43,36 @@ const Sort = () => {
     //     </form>
     //   </div>
     // </Wrapper>
+
     <Wrapper>
       <div className='btn-container'>
         <button
           onClick={setGridView}
-          className={`${grid_view ? 'active' : null}`}
+          className={grid_view ? "active sort-btn" : "sort-btn"}
         >
-          <BsFillGridFill />
+          <BsFillGridFill className="icon" />
         </button>
         <button
           onClick={setListView}
-          className={`${!grid_view ? 'active' : null}`}
+          className={!grid_view ? "active sort-btn" : "sort-btn"}
         >
-          <BsList />
+          <BsList className="icon" />
         </button>
       </div>
-      <p>{products.length} products found</p>
+      <p>{filter_products.length} products found</p>
       <hr />
       <form>
         <label htmlFor='sort'>sort by</label>
         <select
           name='sort'
           id='sort'
-          value={sorting_item}
           onChange={updateSort}
           className='sort-input'
         >
-          <option value='price-lowest'>price (lowest)</option>
-          <option value='price-highest'>price (highest)</option>
-          <option value='name-a'>name (a - z)</option>
-          <option value='name-z'>name (z - a)</option>
+          <option value='lowest'>price (lowest)</option>
+          <option value='highest'>price (highest)</option>
+          <option value='a-z'>name (a - z)</option>
+          <option value='z-a'>name (z - a)</option>
         </select>
       </form>
     </Wrapper>

@@ -16,34 +16,38 @@ const FilterReducer = (state, action) => {
                 ...state,
                 grid_view: false
             }
-        case "GET_SORTED_DATA": {
-            let userSortedValue = document.getElementById("sort")
-            let sortValue = userSortedValue.options[userSortedValue.selectedIndex].value
-            console.log(sortValue);
-            return {
-                ...state,
-                sorting_item: sortValue
-            }
-        }
+        // case "GET_SORT_DATA": {
+        //     let userSortedValue = document.getElementById("sort")
+        //     let sortValue = userSortedValue.options[userSortedValue.selectedIndex].value
+        //     console.log(sortValue);
+        //     return {
+        //         ...state,
+        //         sorting_item: sortValue
+        //     }
+        // }
+        case "UPDATE_SORT":
+            return { ...state, sorting_item: action.payload }
+
         case "SORTING_PRODUCTS": {
+            const { sorting_item, filter_products } = state
             let tempSortProduct = []
-            if (state.sorting_item === 'lowest') {
-                tempSortProduct = state.filter_products.sort((a, b) => {
-                    return a.price - b.price
-                })
-            }
-            if (state.sorting_item === 'highest') {
-                tempSortProduct = state.filter_products.sort((a, b) => {
-                    return b.price - a.price
-                })
-            }
-            if (state.sorting_item === 'a-z') {
-                tempSortProduct = state.filter_products.sort((a, b) => {
+            // if (sorting_item === 'lowest') {
+            //     tempSortProduct = tempSortProduct.sort((a, b) => {
+            //         return a.price - b.price
+            //     })
+            // }
+            // if (sorting_item === 'highest') {
+            //     tempSortProduct = tempSortProduct.sort((a, b) => {
+            //         return b.price - a.price
+            //     })
+            // }
+            if (sorting_item === 'a-z') {
+                tempSortProduct = filter_products.sort((a, b) => {
                     return a.name.localeCompare(b.name)
                 })
             }
-            if (state.sorting_item === 'z-a') {
-                tempSortProduct = state.filter_products.sort((a, b) => {
+            if (sorting_item === 'z-a') {
+                tempSortProduct = filter_products.sort((a, b) => {
                     return b.name.localeCompare(a.name)
                 })
             }
@@ -52,8 +56,6 @@ const FilterReducer = (state, action) => {
                 filter_products: tempSortProduct
             }
         }
-        case "UPDATE_SORT":
-            return { ...state, sorting_item: action.payload }
         default:
             return state
     }

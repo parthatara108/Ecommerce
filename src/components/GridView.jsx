@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import Product from "./Product";
 const GridView = ({ products }) => {
-    const gridProducts = products[0]
-    return (
-        <Wrapper>
-            <div className="container grid grid-three-column">
-                {gridProducts.map((curElem) => {
-                    return <Product key={curElem.id} {...curElem} />
-                })}
-            </div>
-        </Wrapper>
-    )
+  const gridProducts = products[0]
+  return (
+    <Wrapper>
+      <div className="container grid grid-three-column">
+        {gridProducts.map((curElem) => {
+          return <Product key={curElem.id} {...curElem} />
+        })}
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
