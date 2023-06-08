@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from 'react';
+import { createContext, useEffect, useContext, useReducer } from 'react';
 import axios from 'axios';
 import reducer from '../reducer/ProductReducer';
 
@@ -21,7 +21,7 @@ const ProductProvider = ({ children }) => {
         dispatch({ type: 'PRODUCT_DATA_LOADING' })
         try {
             const res = await axios.get(api)
-            const products = await res.data
+            const products = res.data
             dispatch({ type: 'PRODUCT_DATA', payload: products })
         } catch (error) {
             dispatch({ type: 'PRODUCT_DATA_ERROR' })
@@ -49,6 +49,6 @@ const ProductProvider = ({ children }) => {
     )
 }
 export { ProductContext, ProductProvider }
-// export const useProductContext = () => {
-//     return useContext(ProductContext)
-// }
+export const useProductContext = () => {
+    return useContext(ProductContext)
+}

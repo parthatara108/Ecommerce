@@ -5,76 +5,43 @@ import { FilterContext } from "../context/FilterContext";
 const Sort = () => {
   const { filter_products, grid_view, setGridView, setListView, updateSort } = useContext(FilterContext)
   return (
-    // <Wrapper>
-    //   <div className="sorting-list--grid">
-    //     <button
-    //       className={grid_view ? "active sort-btn" : "sort-btn"}
-    //       onClick={setGridView}>
-    //       <BsFillGridFill className="icon" />
-    //     </button>
-
-    //     <button
-    //       className={!grid_view ? "active sort-btn" : " sort-btn"}
-    //       onClick={setListView}>
-    //       <BsList className="icon" />
-    //     </button>
-    //   </div>
-
-    //   <div className="product-data">
-    //     <p>{`${filter_products.length} Products Available`}</p>
-    //   </div>
-
-    //   <div className="sort-selection">
-    //     <form action="#">
-    //       <label htmlFor="sort"></label>
-    //       <select
-    //         name="sort"
-    //         id="sort"
-    //         className="sort-selection--style"
-    //         onClick={sorting}>
-    //         <option value="lowest">Price(lowest)</option>
-    //         <option value="#" disabled></option>
-    //         <option value="highest">Price(highest)</option>
-    //         <option value="#" disabled></option>
-    //         <option value="a-z">Price(a-z)</option>
-    //         <option value="#" disabled></option>
-    //         <option value="z-a">Price(z-a)</option>
-    //       </select>
-    //     </form>
-    //   </div>
-    // </Wrapper>
-
     <Wrapper>
-      <div className='btn-container'>
+      <div className="sorting-list--grid">
         <button
-          onClick={setGridView}
           className={grid_view ? "active sort-btn" : "sort-btn"}
-        >
+          onClick={setGridView}>
           <BsFillGridFill className="icon" />
         </button>
+
         <button
-          onClick={setListView}
-          className={!grid_view ? "active sort-btn" : "sort-btn"}
-        >
+          className={!grid_view ? "active sort-btn" : " sort-btn"}
+          onClick={setListView}>
           <BsList className="icon" />
         </button>
       </div>
-      <p>{filter_products.length} products found</p>
-      <hr />
-      <form>
-        <label htmlFor='sort'>sort by</label>
-        <select
-          name='sort'
-          id='sort'
-          onChange={updateSort}
-          className='sort-input'
-        >
-          <option value='lowest'>price (lowest)</option>
-          <option value='highest'>price (highest)</option>
-          <option value='a-z'>name (a - z)</option>
-          <option value='z-a'>name (z - a)</option>
-        </select>
-      </form>
+
+      <div className="product-data">
+        <p>{`${filter_products.length} Products Available`}</p>
+      </div>
+
+      <div className="sort-selection">
+        <form action="#">
+          <label htmlFor="sort"></label>
+          <select
+            name="sort"
+            id="sort"
+            className="sort-selection--style"
+            onClick={updateSort}>
+            <option value="lowest">Price(lowest)</option>
+            <option value="#" disabled></option>
+            <option value="highest">Price(highest)</option>
+            <option value="#" disabled></option>
+            <option value="a-z">Price(a-z)</option>
+            <option value="#" disabled></option>
+            <option value="z-a">Price(z-a)</option>
+          </select>
+        </form>
+      </div>
     </Wrapper>
   )
 }
@@ -100,7 +67,7 @@ const Wrapper = styled.section`
       font-size: 1.6rem;
     }
     .active {
-      background-color: ${({ theme }) => theme.colors.black};
+      background-color: #000;
       color: #fff;
     }
   }
@@ -117,4 +84,5 @@ const Wrapper = styled.section`
     }
   }
 `;
+
 export default Sort

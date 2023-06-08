@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Product from "./Product";
 const GridView = ({ products }) => {
-  const gridProducts = products[0]
   return (
     <Wrapper>
       <div className="container grid grid-three-column">
-        {gridProducts.map((curElem) => {
-          return <Product key={curElem.id} {...curElem} />
+        {products.map((product) => {
+          return <Product key={product.id} {...product} />
         })}
       </div>
     </Wrapper>
@@ -23,7 +22,9 @@ const Wrapper = styled.section`
   .grid {
     gap: 3.2rem;
   }
-
+  .caption{
+    color: red;
+  }
   figure {
     width: auto;
     display: flex;
@@ -58,7 +59,7 @@ const Wrapper = styled.section`
   }
 
   .card {
-    background-color: ${({ theme }) => theme.colors.bg};
+    background-color: #F6F8FA;
     border-radius: 1rem;
 
     .card-data {
@@ -73,11 +74,11 @@ const Wrapper = styled.section`
     }
 
     .card-data--price {
-      color: ${({ theme }) => theme.colors.helper};
+      color: red;
     }
 
     h3 {
-      color: ${({ theme }) => theme.colors.text};
+      color: red};
       text-transform: capitalize;
     }
 

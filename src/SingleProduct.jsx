@@ -9,6 +9,7 @@ import { Container } from "./styles/Container";
 import Images from "./components/Images";
 import Star from "./components/Star";
 import AddToCart from "./components/AddToCart";
+import Loading from "./components/Loading";
 
 const api = "https://course-api.com/react-store-single-product?id="
 
@@ -27,12 +28,14 @@ const SingleProduct = () => {
     reviews,
     images,
   } = singleProduct
-  if (isSingleLoading === true) {
-    <div>Loading....</div>
-  }
+
   useEffect(() => {
     getSingleProduct(`${api}${id}`);
-  }, [id])
+  }, [id]);
+
+  if (isSingleLoading === true) {
+    return <Loading />
+  }
 
   return <Wrapper>
     <PageNavigation title={name} />
@@ -131,7 +134,7 @@ const Wrapper = styled.section`
 
     .product-data-price {
       font-weight: bold;
-      color: #5271ff
+      color: red;
     }
     .product-data-info {
       display: flex;
@@ -159,7 +162,7 @@ const Wrapper = styled.section`
     align-items: center;
   }
 
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+  @media (max-width: 768px) {
     padding: 0 2.4rem;
   }
 `;

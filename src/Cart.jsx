@@ -1,8 +1,85 @@
+import { useContext } from "react";
 import styled from "styled-components";
-
+import { CartContext } from "./context/CartContex";
+import CartItem from "./components/CartItem";
+import { Link } from "react-router-dom";
+import { Button } from "./styles/Button";
+import FormatPrice from "./Helpers/FormatPrice";
 const Cart = () => {
-  return <Wrapper></Wrapper>;
+  const { cart, clearCart, total_amount, shipping_fee } = useContext(CartContext)
+
+  if (cart.length === 0) {
+    return <EmptyDiv>
+      <h3>No Items In Cart</h3>
+      <Link to='/products'>
+        <Button>Continue Shooping</Button>
+      </Link>
+
+    </EmptyDiv>
+  }
+  return <Wrapper>
+    <div className="container">
+      <div className="cart_heading grid grid-five-column">
+        <p>Item</p>
+        <p className="cart-hide">Price</p>
+        <p>Quantity</p>
+        <p className="cart-hide">Subtotal</p>
+        <p>Remove</p>
+      </div>
+      <hr />
+      <div className="cart-item">
+        {cart.map((curElem) => {
+          return <CartItem key={curElem.id} {...curElem} />;
+        })}
+      </div>
+      <hr />
+      <div className="cart-two-button">
+        <Link to="/products">
+          <Button> continue Shopping </Button>
+        </Link>
+        <Button className="btn btn-clear" onClick={clearCart}>
+          clear cart
+        </Button>
+      </div>
+
+      <div className="order-total--amount">
+        <div className="order-total--subdata">
+          <div>
+            <p>subtotal:</p>
+            <p>
+              <FormatPrice price={total_amount} />
+            </p>
+          </div>
+          <div>
+            <p>shipping fee:</p>
+            <p>
+              <FormatPrice price={shipping_fee} />
+            </p>
+          </div>
+          <hr />
+          <div>
+            <p>order total:</p>
+            <p>
+              <FormatPrice price={shipping_fee + total_amount} />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Wrapper>;
 };
+const EmptyDiv = styled.div`
+  display: grid;
+  place-items: center;
+  height: 50vh;
+  margin-bottom: 219px;
+
+  h3 {
+    font-size: 4.2rem;
+    text-transform: capitalize;
+    font-weight: 300;
+  }
+`;
 
 const Wrapper = styled.section`
   padding: 9rem 0;
@@ -104,7 +181,7 @@ const Wrapper = styled.section`
 
     .amount-style {
       font-size: 2.4rem;
-      color: ${({ theme }) => theme.colors.btn};
+      color: rgb(98 84 243);
     }
   }
 
@@ -142,11 +219,11 @@ const Wrapper = styled.section`
 
     div p:last-child {
       font-weight: bold;
-      color: ${({ theme }) => theme.colors.heading};
+      color: rgb(24 24 29);
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+  @media (max-width: 768px) {
     .grid-five-column {
       grid-template-columns: 1.5fr 1fr 0.5fr;
     }

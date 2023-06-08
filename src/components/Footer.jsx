@@ -1,147 +1,38 @@
-import styled from "styled-components";
-import { FaDiscord, FaInstagram, FaYoutube } from "react-icons/fa";
+import styled from 'styled-components'
 
 const Footer = () => {
   return (
-    <>
-      <Wrapper>
-        {/* footer section */}
+    <Container>
+      <h3>
+        &copy; {new Date().getFullYear()}
+        <span> Parth Atara</span> All rights reserved
+      </h3>
+    </Container>
+  )
+}
 
-        <footer>
-          <div className="container grid grid-four-column">
-            <div className="footer-about">
-              <h3>Parth Atara</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
-            </div>
-            <div className="footer-subscribe">
-              <h3>Subscribe to get important updates</h3>
-              <form action="#">
-                <input type="email" name="email" placeholder="YOUR E-MAIL" />
-
-                <input type="submit" value="subscribe" />
-              </form>
-            </div>
-            <div className="footer-social">
-              <h3>Follow Us</h3>
-              <div className="footer-social--icons">
-                <div>
-                  <FaDiscord className="icons" />
-                </div>
-                <div>
-                  <FaInstagram className="icons" />
-                </div>
-                <div>
-                  <a
-                    href="https://www.youtube.com/channel/UCwfaAHy4zQUb2APNOGXUCCA"
-                    target="blank">
-                    <FaYoutube className="icons" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="footer-contact">
-              <h3>Call Us</h3>
-              <h3>+91 12345678978</h3>
-            </div>
-          </div>
-
-          <div className="footer-bottom--section">
-            <hr />
-            <div className="container grid grid-two-column ">
-              <p>
-                @{new Date().getFullYear()} ParthAtara. All Rights Reserved
-              </p>
-              <div>
-                <p>PRIVACY POLICY</p>
-                <p>TERMS & CONDITIONS</p>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </Wrapper>
-    </>
-  );
-};
-
-const Wrapper = styled.section`
-  .iSIFGq {
-    margin: 0;
+const Container = styled.footer`
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  text-align: center;
+  span {
+    color: red;
   }
+  h3 {
+    color: white;
+    margin: 0.1rem;
 
-  .contact-short {
-    max-width: 60vw;
-    margin: auto;
-    padding: 5rem 10rem;
-    background-color: ${({ theme }) => theme.colors.bg};
-    border-radius: 1rem;
-    box-shadow: ${({ theme }) => theme.colors.shadowSupport};
-    transform: translateY(50%);
-
-    .grid div:last-child {
-      justify-self: end;
-      align-self: center;
-    }
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1.25;
   }
-
-  footer {
-    padding: 14rem 0 9rem 0;
-    background-color: ${({ theme }) => theme.colors.footer_bg};
-    h3 {
-      color: ${({ theme }) => theme.colors.hr};
-      margin-bottom: 2.4rem;
-    }
-    p {
-      color: ${({ theme }) => theme.colors.white};
-    }
-    .footer-social--icons {
-      display: flex;
-      gap: 2rem;
-
-      div {
-        padding: 1rem;
-        border-radius: 50%;
-        border: 2px solid ${({ theme }) => theme.colors.white};
-
-        .icons {
-          color: ${({ theme }) => theme.colors.white};
-          font-size: 2.4rem;
-          position: relative;
-          cursor: pointer;
-        }
-      }
-    }
+  @media (min-width: 776px) {
+    flex-direction: row;
   }
+`
 
-  .footer-bottom--section {
-    padding-top: 9rem;
-
-    hr {
-      margin-bottom: 2rem;
-      color: ${({ theme }) => theme.colors.hr};
-      height: 0.1px;
-    }
-  }
-
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    .contact-short {
-      max-width: 80vw;
-      margin: 4.8rem auto;
-      transform: translateY(0%);
-      text-align: center;
-
-      .grid div:last-child {
-        justify-self: center;
-      }
-    }
-
-    footer {
-      padding: 9rem 0 9rem 0;
-    }
-
-    .footer-bottom--section {
-      padding-top: 4.8rem;
-    }
-  }
-`;
-
-export default Footer;
+export default Footer

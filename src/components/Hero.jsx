@@ -1,14 +1,14 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { Button } from '../styles/Button'
-const Hero = ({ name }) => {
+const Hero = () => {
   return (
     <Wrapper>
       <div className="container">
         <div className="grid grid-two-column">
           <div className="hero-section-data">
-            <p className="intro-data">Welcome To </p>
-            <h1>{name}</h1>
+            <p className="intro-data" style={{ color: 'red' }}>Welcome To </p>
+            <h1>Parth Store</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa tenetur ipsum dignissimos rem, odio aliquid doloremque ea. Aspernatur doloremque adipisci, sapiente ut repudiandae, nesciunt quas placeat commodi, eius excepturi necessitatibus.
             </p>
@@ -18,7 +18,7 @@ const Hero = ({ name }) => {
           </div>
           <div className="hero-section-image">
             <figure>
-              <img src="images/hero.jpg" alt="img" className="img-style" />
+              <img src="images/main.jpeg" alt="img" className="img-style" />
             </figure>
           </div>
         </div>
@@ -63,8 +63,9 @@ const Wrapper = styled.section`
       content: "";
       width: 60%;
       height: 80%;
-      background-color: rgba(81, 56, 238, 0.4);
+      background-color: red;
       position: absolute;
+      opacity: 0.4;
       left: 50%;
       top: -5rem;
       z-index: -1;
@@ -75,7 +76,7 @@ const Wrapper = styled.section`
     height: auto;
   }
 
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+  @media (max-width: 768px) {
     .grid {
       gap: 10rem;
     }
@@ -86,8 +87,7 @@ const Wrapper = styled.section`
       height: 100%;
       left: 0;
       top: 10%;
-      /* bottom: 10%; */
-      background-color: rgba(81, 56, 238, 0.4);
+      background-color: red;
     }
   }
 `

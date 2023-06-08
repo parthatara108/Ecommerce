@@ -2,20 +2,21 @@ import { ProductContext } from "../context/ProductContext";
 import styled from "styled-components";
 import Product from "./Product";
 import { useContext } from "react";
+import Loading from "./Loading";
 
 const FeatureProduct = () => {
 
   const { isLoading, featureProducts } = useContext(ProductContext);
 
   if (isLoading) {
-    return <div> ......Loading </div>;
+    return <Loading />;
   }
 
   return (
     <Wrapper className="section">
       <div className="container">
         <div className="intro-data">Check Now!</div>
-        <div className="common-heading">Our Feature Services</div>
+        <div className="common-heading">Featured Products</div>
         <div className="grid grid-three-column">
           {featureProducts.map((curElem) => {
             return <Product key={curElem.id} {...curElem} />;
@@ -28,12 +29,14 @@ const FeatureProduct = () => {
 
 const Wrapper = styled.section`
   padding: 9rem 0;
-  background-color: ${({ theme }) => theme.colors.bg};
+  background-color: #F6F8FA;
 
   .container {
     max-width: 120rem;
   }
-
+.intro-data{
+  color: red;
+}
   figure {
     width: auto;
     display: flex;
@@ -71,8 +74,8 @@ const Wrapper = styled.section`
       top: 15%;
       right: 10%;
       text-transform: uppercase;
-      background-color: ${({ theme }) => theme.colors.bg};
-      color: ${({ theme }) => theme.colors.helper};
+      background-color: #F6F8FA;
+      color: red;
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       border-radius: 2rem;
@@ -95,12 +98,12 @@ const Wrapper = styled.section`
     }
 
     h3 {
-      color: ${({ theme }) => theme.colors.text};
+      color: rgba(29 ,29, 29, .8);
       text-transform: capitalize;
     }
 
     .card-data--price {
-      color: ${({ theme }) => theme.colors.helper};
+      color: red;
     }
 
     .btn {

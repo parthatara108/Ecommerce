@@ -37,7 +37,7 @@ const Wrapper = styled.section`
   img {
     width: 100%;
     display: block;
-    border-radius: var(--radius);
+    border-radius: 10px;
     object-fit: cover;
   }
   .gallery {
@@ -51,7 +51,7 @@ const Wrapper = styled.section`
     }
   }
   .active {
-    border: 2px solid var(--clr-primary-5);
+    border: 2px solid black;
   }
   @media (max-width: 576px) {
     .main {

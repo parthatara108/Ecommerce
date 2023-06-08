@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Product = (curElem) => {
-    const { id, name, image, price, category } = curElem;
+const Product = ({ id, name, image, price, category }) => {
     return (
         <Link to={`/singleproduct/${id}`}>
             <div className="card">

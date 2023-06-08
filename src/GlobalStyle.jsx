@@ -1,18 +1,17 @@
 import { createGlobalStyle } from "styled-components";
-
 const GlobalStyle = createGlobalStyle`
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 
 html {
   font-size: 62.5%;
-  /* scroll-behavior: smooth; */
+  ${'' /* scroll-behavior: smooth; */}
   /* 1rem = 10px */
   overflow-x: hidden;
 }
@@ -39,22 +38,14 @@ body::-webkit-scrollbar-thumb {
     background-clip: content-box;
 }
 
-h1,
-h2,
-h3,
-h4 {
-   font-family: "Work Sans", sans-serif;
-
-}
-
 h1 {
-  color: ${({ theme }) => theme.colors.heading};
+  color:rgb(24 24 29);
   font-size: 6rem;
   font-weight: 900;
 }
 
  h2 {
-   color: ${({ theme }) => theme.colors.heading};
+   color: rgb(24 24 29);
    font-size: 4.4rem;
    font-weight: 300;
    white-space: normal;
@@ -67,7 +58,7 @@ h3 {
 }
 
 p, button {
-  color: ${({ theme }) => theme.colors.text};
+  color: rgba(29 ,29, 29, .8);
   font-size: 1.65rem;
   line-height: 1.5;
   font-weight:400;

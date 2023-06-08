@@ -3,39 +3,39 @@ import styled from "styled-components";
 import { Button } from "../styles/Button";
 
 const ListView = ({ products }) => {
-    const listProducts = products[0]
-    return (
-        <Wrapper className="section">
-            <div className="container grid">
-                {listProducts.map((curElem) => {
-                    const { id, name, image, price, description } = curElem;
-                    return (
-                        <div key={id} className="card grid grid-two-column">
-                            <figure>
-                                <img src={image} alt={name} />
-                            </figure>
+  const listProducts = products
+  return (
+    <Wrapper className="section">
+      <div className="container grid">
+        {listProducts.map((curElem) => {
+          const { id, name, image, price, description } = curElem;
+          return (
+            <div key={id} className="card grid grid-two-column">
+              <figure>
+                <img src={image} alt={name} />
+              </figure>
 
-                            <div className="card-data">
-                                <h3>{name}</h3>
-                                <p>
-                                    {Intl.NumberFormat('en-IN', {
-                                        style: 'currency',
-                                        currency: 'INR',
-                                        maximumFractionDigits: 2,
-                                    }).format(price / 100)}
-                                </p>
-                                <p>{description.slice(0, 90)}...</p>
+              <div className="card-data">
+                <h3>{name}</h3>
+                <p>
+                  {Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR',
+                    maximumFractionDigits: 2,
+                  }).format(price / 100)}
+                </p>
+                <p>{description.slice(0, 90)}...</p>
 
-                                <Link to={`/singleproduct/${id}`} className="btn-main">
-                                    <Button className="btn">Read More</Button>
-                                </Link>
-                            </div>
-                        </div>
-                    );
-                })}
+                <Link to={`/singleproduct/${id}`} className="btn-main">
+                  <Button className="btn">Read More</Button>
+                </Link>
+              </div>
             </div>
-        </Wrapper>
-    );
+          );
+        })}
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
