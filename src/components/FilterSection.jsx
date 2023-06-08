@@ -167,10 +167,6 @@ const Wrapper = styled.section`
         background-color: #fff;
         text-transform: capitalize;
         cursor: pointer;
-
-        &:hover {
-          color: red;
-        }
       }
 
       .active {
