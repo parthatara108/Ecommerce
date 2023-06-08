@@ -23,22 +23,14 @@ export const FilterProvider = ({ children }) => {
     const { products } = useProductContext()
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    // useEffect(() => {
-    //     const storedState = localStorage.getItem("filterState");
-    //     if (storedState) {
-    //         dispatch({ type: "LOAD_FILTER_STATE", payload: JSON.parse(storedState) });
-    //     }
-    // }, []);
+    useEffect(() => {
+        dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products })
+    }, [products])
 
     useEffect(() => {
         dispatch({ type: "FILTER_PRODUCTS" })
         dispatch({ type: "SORTING_PRODUCTS" })
     }, [state.sorting_item, state.filters])
-    useEffect(() => {
-        dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products })
-    }, [products])
-
-
 
     const setGridView = () => {
         return dispatch({ type: "SET_GRID_LAYOUT" })
