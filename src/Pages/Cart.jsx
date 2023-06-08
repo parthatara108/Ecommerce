@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { CartContext } from "./context/CartContex";
-import CartItem from "./components/CartItem";
+import { CartContext } from "../context/CartContex";
+import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
-import { Button } from "./styles/Button";
-import FormatPrice from "./Helpers/FormatPrice";
+import { Button } from "../styles/Button";
+import FormatPrice from "../Helpers/FormatPrice";
 const Cart = () => {
   const { cart, clearCart, total_amount, shipping_fee } = useContext(CartContext)
 

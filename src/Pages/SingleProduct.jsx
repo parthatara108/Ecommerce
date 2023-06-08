@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { ProductContext } from "./context/ProductContext";
-import PageNavigation from "./components/PageNavigation";
+import { ProductContext } from "../context/ProductContext";
+import PageNavigation from "../components/PageNavigation";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
-import { Container } from "./styles/Container";
-import Images from "./components/Images";
-import Star from "./components/Star";
-import AddToCart from "./components/AddToCart";
-import Loading from "./components/Loading";
+import { Container } from "../styles/Container";
+import Images from "../components/Images";
+import Star from "../components/Star";
+import AddToCart from "../components/AddToCart";
+import Loading from "../components/Loading";
 
 const api = "https://course-api.com/react-store-single-product?id="
 
