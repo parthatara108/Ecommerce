@@ -12,7 +12,7 @@ const Services = () => {
           <div className="services-1">
             <div>
               <TbTruckDelivery className="icon" />
-              <h3>Super Fast and Free Delivery</h3>
+              <h3>Super Fast Delivery</h3>
             </div>
           </div>
 
